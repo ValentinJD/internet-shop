@@ -6,7 +6,6 @@ public abstract class AbstractModel {
 
     protected Integer id;
 
-
     public AbstractModel() {
     }
 

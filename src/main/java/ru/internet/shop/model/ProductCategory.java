@@ -1,4 +1,4 @@
 package ru.internet.shop.model;
 
-public class ProductGroup {
+public class ProductCategory {
 }
