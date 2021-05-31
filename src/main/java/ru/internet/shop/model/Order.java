@@ -1,4 +1,9 @@
 package ru.internet.shop.model;
 
-public class Order {
+import java.util.List;
+
+public class Order extends AbstractModel{
+    private List<Product> productList;
+
+
 }
