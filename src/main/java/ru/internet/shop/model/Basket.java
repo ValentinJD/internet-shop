@@ -1,12 +1,11 @@
 package ru.internet.shop.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Basket extends AbstractModel{
     private User client;
 
-    private final List<OrderItem> itemList = new ArrayList<>();
+    private final Map<Product, Integer> itemList = new HashMap<>();
 
     public User getClient() {
         return client;
@@ -16,7 +15,7 @@ public class Basket extends AbstractModel{
         this.client = client;
     }
 
-    public List<OrderItem> getItemList() {
+    public Map<Product, Integer> getItemList() {
         return itemList;
     }
 
@@ -28,7 +27,7 @@ public class Basket extends AbstractModel{
 
         Basket basket = (Basket) o;
 
-        if (client != null ? !client.equals(basket.client) : basket.client != null) return false;
+        if (!Objects.equals(client, basket.client)) return false;
         return itemList.equals(basket.itemList);
     }
 

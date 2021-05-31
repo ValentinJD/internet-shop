@@ -8,7 +8,11 @@ public class Product extends AbstractModel{
 
     private String description;
 
-    private Images images;
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
+    private List<Image> images;
 
     private Float price;
 
@@ -44,12 +48,12 @@ public class Product extends AbstractModel{
         this.description = description;
     }
 
-    public Images getImages() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setImages(Images images) {
-        this.images = images;
+    public void setImages(Image image) {
+        this.images.add(image);
     }
 
     public Float getPrice() {
