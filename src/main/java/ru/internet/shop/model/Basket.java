@@ -2,10 +2,14 @@ package ru.internet.shop.model;
 
 import java.util.*;
 
-public class Basket extends AbstractModel{
+public class Basket extends AbstractModel {
     private User client;
 
     private final Map<Product, Integer> itemList = new HashMap<>();
+
+    public Basket(User client) {
+        this.client = client;
+    }
 
     public User getClient() {
         return client;
@@ -17,6 +21,14 @@ public class Basket extends AbstractModel{
 
     public Map<Product, Integer> getItemList() {
         return itemList;
+    }
+
+    public void addItem(Product key, Integer value) {
+        itemList.put(key, value);
+    }
+
+    public void addItemList(Map<Product, Integer> map) {
+        itemList.putAll(map);
     }
 
     @Override

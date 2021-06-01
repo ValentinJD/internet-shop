@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class Order extends AbstractModel{
+public class Order extends AbstractModel {
 
     private final Map<Product, Integer> productAndCountMap = new HashMap<>();
 
@@ -21,9 +21,19 @@ public class Order extends AbstractModel{
 
     private DeliveryCompany deliveryCompany;
 
-    private Status status;
+    private OrderStatus status;
 
     private String comment;
+
+    public Order(User client, SystemPayment systemPayment, DeliveryCompany deliveryCompany) {
+        this.totalPrice = (float) 0;
+        this.dateCreated = new Date();
+        this.client = client;
+        this.systemPayment = systemPayment;
+        this.deliveryCompany = deliveryCompany;
+        this.status = OrderStatus.PROCESS;
+        this.comment = "Оставьте комментарий";
+    }
 
     public Map<Product, Integer> getProductAndCountMap() {
         return productAndCountMap;
@@ -77,11 +87,11 @@ public class Order extends AbstractModel{
         this.deliveryCompany = deliveryCompany;
     }
 
-    public Status getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 

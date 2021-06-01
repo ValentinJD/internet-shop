@@ -1,5 +1,7 @@
 package ru.internet.shop.model;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -30,6 +32,22 @@ public class User extends AbstractModel {
     private Integer discount;
 
     private Integer amount;
+
+    public User(String firstName, String lastName, String login, String password, Language language,
+                String telephone, String email, Role... roles) {
+        this.basket = new Basket(this);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.login = login;
+        this.password = password;
+        this.language = language;
+        this.status = Status.BASIC;
+        this.roles = new HashSet<>(Arrays.asList(roles));
+        this.telephone = telephone;
+        this.email = email;
+        this.discount = 0;
+        this.amount = 0;
+    }
 
     public Order getOrder() {
         return order;

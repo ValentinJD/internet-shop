@@ -1,5 +1,7 @@
 package ru.internet.shop.model;
 
+import java.util.Objects;
+
 public class Image extends AbstractNamedModel{
 
     private String url;
@@ -25,7 +27,7 @@ public class Image extends AbstractNamedModel{
 
         Image image = (Image) o;
 
-        return url != null ? url.equals(image.url) : image.url == null;
+        return Objects.equals(url, image.url);
     }
 
     @Override

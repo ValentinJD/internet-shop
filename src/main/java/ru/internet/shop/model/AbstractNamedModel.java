@@ -1,7 +1,9 @@
 package ru.internet.shop.model;
 
+import java.util.Objects;
+
 public abstract class AbstractNamedModel extends AbstractModel{
-    private String name;
+    protected String name;
 
     public AbstractNamedModel(String name) {
         this.name = name;
@@ -23,7 +25,7 @@ public abstract class AbstractNamedModel extends AbstractModel{
 
         AbstractNamedModel that = (AbstractNamedModel) o;
 
-        return name != null ? name.equals(that.name) : that.name == null;
+        return Objects.equals(name, that.name);
     }
 
     @Override

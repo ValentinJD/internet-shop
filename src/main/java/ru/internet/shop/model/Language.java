@@ -1,6 +1,12 @@
 package ru.internet.shop.model;
 
 public enum Language {
-    RUS,
-    ENG;
+    RUS("Русский"),
+    ENG("English");
+
+    String name;
+
+    Language(String name) {
+        this.name = name;
+    }
 }

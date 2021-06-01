@@ -1,20 +1,13 @@
 package ru.internet.shop.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class Product extends AbstractModel{
-
-    private String name;
-
-    private String description;
-
-    public void setImages(List<Image> images) {
-        this.images = images;
-    }
-
-    private List<Image> images;
-
+public class Product extends AbstractNamedModel{
     private Float price;
+
+    private final List<Image> images = new ArrayList<>();
 
     private boolean available;
 
@@ -32,12 +25,26 @@ public class Product extends AbstractModel{
 
     private Manufacturer manufacturer;
 
-    public String getName() {
-        return name;
+    private String description;
+
+    public Product(String name, Float price, Integer count, List<Option> options, Language language,
+                   ProductCategory category, Manufacturer manufacturer, String description) {
+        super(name);
+        this.price = price;
+        this.count = count;
+        this.options = options;
+        this.language = language;
+        this.category = category;
+        this.manufacturer = manufacturer;
+        this.description = description;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void addImage(Image image) {
+        this.images.add(image);
+    }
+
+    public void addImages(List<Image> images) {
+        this.images.addAll(images);
     }
 
     public String getDescription() {
@@ -137,18 +144,18 @@ public class Product extends AbstractModel{
         Product product = (Product) o;
 
         if (available != product.available) return false;
-        if (name != null ? !name.equals(product.name) : product.name != null) return false;
-        if (description != null ? !description.equals(product.description) : product.description != null) return false;
-        if (images != null ? !images.equals(product.images) : product.images != null) return false;
-        if (price != null ? !price.equals(product.price) : product.price != null) return false;
-        if (count != null ? !count.equals(product.count) : product.count != null) return false;
-        if (options != null ? !options.equals(product.options) : product.options != null) return false;
-        if (SeoDescription != null ? !SeoDescription.equals(product.SeoDescription) : product.SeoDescription != null)
+        if (!Objects.equals(name, product.name)) return false;
+        if (!Objects.equals(description, product.description)) return false;
+        if (!images.equals(product.images)) return false;
+        if (!Objects.equals(price, product.price)) return false;
+        if (!Objects.equals(count, product.count)) return false;
+        if (!Objects.equals(options, product.options)) return false;
+        if (!Objects.equals(SeoDescription, product.SeoDescription))
             return false;
-        if (SeoKeyWords != null ? !SeoKeyWords.equals(product.SeoKeyWords) : product.SeoKeyWords != null) return false;
-        if (language != null ? !language.equals(product.language) : product.language != null) return false;
-        if (category != null ? !category.equals(product.category) : product.category != null) return false;
-        return manufacturer != null ? manufacturer.equals(product.manufacturer) : product.manufacturer == null;
+        if (!Objects.equals(SeoKeyWords, product.SeoKeyWords)) return false;
+        if (!Objects.equals(language, product.language)) return false;
+        if (!Objects.equals(category, product.category)) return false;
+        return Objects.equals(manufacturer, product.manufacturer);
     }
 
     @Override
@@ -156,7 +163,7 @@ public class Product extends AbstractModel{
         int result = super.hashCode();
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (images != null ? images.hashCode() : 0);
+        result = 31 * result + images.hashCode();
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (available ? 1 : 0);
         result = 31 * result + (count != null ? count.hashCode() : 0);
@@ -172,10 +179,10 @@ public class Product extends AbstractModel{
     @Override
     public String toString() {
         return "Product{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", images=" + images +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", price=" + price +
+                ", images=" + images +
                 ", available=" + available +
                 ", count=" + count +
                 ", options=" + options +
@@ -184,6 +191,7 @@ public class Product extends AbstractModel{
                 ", language=" + language +
                 ", category=" + category +
                 ", manufacturer=" + manufacturer +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
