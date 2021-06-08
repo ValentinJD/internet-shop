@@ -8,6 +8,6 @@ class ShopApplicationTests {
 
     @Test
     void contextLoads() {
+        System.out.println("Начало теста");
     }
-
 }
