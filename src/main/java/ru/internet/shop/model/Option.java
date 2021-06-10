@@ -1,8 +1,5 @@
 package ru.internet.shop.model;
 
-public class Option extends AbstractNamedModel{
+public class Option {
 
-    public Option(String name) {
-        super(name);
-    }
 }

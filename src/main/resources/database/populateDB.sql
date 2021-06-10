@@ -1,5 +1,14 @@
-DELETE FROM "User" where "Id" > 0;
+DELETE FROM "users" where 1 > 0;
 
-INSERT INTO "User" VALUES
-(1, 'vpetrov@jr.com'),
-(2, 'pvasechkin@jr.com');
+ALTER SEQUENCE global_seq RESTART WITH 100000;
+
+INSERT INTO users (first_name, last_name, login, password, telephone, email)
+VALUES ('Admin', 'Adminov', 'admin', 'password', '+71234567890', 'admin@gmail.com'),
+       ('User', 'Userov', 'user', 'password', '+79999999999', 'user@gmail.com');
+
+-- DELETE
+-- FROM "tt";
+
+-- INSERT INTO tt (name)
+-- VALUES ('Fidel'),
+--        ('Kolyan')

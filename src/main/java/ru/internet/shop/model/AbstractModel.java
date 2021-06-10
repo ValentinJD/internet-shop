@@ -1,37 +1,25 @@
 package ru.internet.shop.model;
 
-import java.util.Objects;
+import org.springframework.data.domain.Persistable;
 
-public abstract class AbstractModel {
+import javax.persistence.*;
 
+@MappedSuperclass
+@Access(AccessType.FIELD)
+public abstract class AbstractModel implements Persistable<Integer> {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
 
-    public AbstractModel() {
-    }
-
+    @Override
     public boolean isNew() {
         return this.id == null;
     }
 
+    @Override
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AbstractModel that = (AbstractModel) o;
-        return Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 
 }

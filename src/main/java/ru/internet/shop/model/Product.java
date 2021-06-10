@@ -29,7 +29,7 @@ public class Product extends AbstractNamedModel{
 
     public Product(String name, Float price, Integer count, List<Option> options, Language language,
                    ProductCategory category, Manufacturer manufacturer, String description) {
-        super(name);
+
         this.price = price;
         this.count = count;
         this.options = options;

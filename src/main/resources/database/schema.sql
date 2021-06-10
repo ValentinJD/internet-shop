@@ -83,7 +83,7 @@ DROP TABLE IF EXISTS "delivery_company";
 
 DROP TABLE IF EXISTS "system_payment";
 
-CREATE TABLE "User"
+CREATE TABLE "users"
 (
     "Id"          serial NOT NULL,
     "Id_busket"   int    NOT NULL,

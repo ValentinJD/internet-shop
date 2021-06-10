@@ -6,11 +6,6 @@ public class Image extends AbstractNamedModel{
 
     private String url;
 
-    public Image(String name, String url) {
-        super(name);
-        this.url = url;
-    }
-
     public String getUrl() {
         return url;
     }

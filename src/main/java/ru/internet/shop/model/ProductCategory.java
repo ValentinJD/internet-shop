@@ -10,7 +10,6 @@ public class ProductCategory extends AbstractNamedModel{
     private final Set<Product> products = new HashSet<>();
 
     public ProductCategory(String name, Image image) {
-        super(name);
         this.image = image;
     }
 
